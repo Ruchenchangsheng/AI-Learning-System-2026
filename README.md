@@ -14,14 +14,49 @@ cd AI-Learning-System-2026
 # 2. 查看今日学习计划
 cat progress/daily_logs/2026-03-29.md
 
-# 3. 开始学习！
+# 3. 查看Excel学习计划（推荐）
+# 打开 excel_files/学习计划.xlsx
+
+# 4. 开始学习！
 # 按照表格中的任务进行学习
 
-# 4. 晚上提交进度
+# 5. 晚上提交进度
 git add .
 git commit -m "今日学习总结"
 git push origin main
 ```
+
+## 📊 Excel文件说明
+
+系统使用**Excel格式**存储学习数据，比JSON更直观易用：
+
+### 📁 Excel文件目录：`excel_files/`
+
+#### 1. **学习计划.xlsx**
+- 📄 **学习计划总览**：总体学习计划
+- 📄 **每日安排**：详细时间安排表
+- 📄 **里程碑**：重要里程碑节点
+
+#### 2. **每日任务模板.xlsx**
+- 📄 **每日模板**：每日学习模板结构
+- 📄 **第1阶段任务**：第1阶段每日详细任务
+- 📄 **检查清单**：各类检查项目
+- 📄 **完成指标**：任务完成评估标准
+- 📄 **每日问题**：每日自问问题
+
+#### 3. **学习统计.xlsx**
+- 📄 **当前进度**：当前学习进度指标
+- 📄 **学习统计**：学习数据统计
+- 📄 **知识掌握**：各学科掌握程度
+- 📄 **性能指标**：学习效率指标
+- 📄 **下一个里程碑**：即将到来的里程碑
+
+### 💡 Excel优势：
+- ✅ **直观查看**：比JSON更易读
+- ✅ **无需安装**：直接用Excel软件打开
+- ✅ **支持筛选**：Excel内置数据筛选功能
+- ✅ **方便打印**：适合打印和分享
+- ✅ **图表支持**：可用Excel图表功能
 
 ## 📅 学习计划
 
@@ -56,22 +91,21 @@ git push origin main
 ```
 AI-Learning-System-2026/
 ├── README.md                    # 本文件
-├── config/                      # 配置文件
-│   ├── learning_plan.json      # 93天详细学习计划
-│   ├── daily_checklist.json    # 每日任务模板
-│   ├── interview_questions.json # 面试题库
-│   └── knowledge_base.json     # 知识点库
+├── excel_files/                 # Excel文件（主要数据存储）
+│   ├── 学习计划.xlsx           # 学习计划总览
+│   ├── 每日任务模板.xlsx       # 每日任务模板
+│   └── 学习统计.xlsx           # 学习统计
 ├── progress/                    # 学习进度
-│   ├── daily_logs/             # 每日日志（含打卡表格）
+│   ├── daily_logs/             # 每日日志（Markdown格式）
 │   │   └── 2026-03-29.md      # 今日学习日志
 │   ├── weekly_reports/         # 周报目录
 │   ├── monthly_reviews/        # 月总结目录
-│   └── learning_stats.json     # 学习统计
-├── data/                        # 数据文件
-│   ├── learning_stats.csv      # 学习统计CSV
-│   └── knowledge_gaps.csv      # 薄弱知识点
+│   └── learning_stats.json     # （已删除，改用Excel）
 ├── scripts/                     # 自动化脚本
-│   └── daily_update.py         # 每日更新脚本
+│   ├── simple_daily.sh         # 简易每日脚本
+│   ├── daily_update.py         # 每日更新脚本
+│   ├── generate_excel_directly.py # Excel生成脚本
+│   └── create_simple_learning_plan.py # 学习计划生成
 ├── docs/                        # 文档
 │   └── USER_GUIDE.md           # 用户指南
 └── .github/workflows/          # GitHub Actions
@@ -94,12 +128,12 @@ AI-Learning-System-2026/
 
 ### 爸爸的操作
 1. **早上**：`git pull origin main` 拉取最新计划
-2. **学习**：按照表格任务学习，记录进度
+2. **学习**：按照Excel/日志中的任务学习，记录进度
 3. **晚上**：提交进度到GitHub
-4. **查看**：在GitHub查看学习统计
+4. **查看**：在GitHub或Excel中查看学习统计
 
 ### 小爪的服务
-1. **计划管理**：制定和调整学习计划
+1. **计划管理**：维护Excel学习计划
 2. **进度跟踪**：监控学习进度和质量
 3. **学习支持**：解答问题和提供指导
 4. **面试训练**：进行模拟面试和反馈
@@ -135,16 +169,17 @@ AI-Learning-System-2026/
 # 查看今日进度
 cat progress/daily_logs/$(date '+%Y-%m-%d').md
 
-# 查看学习统计
-cat progress/learning_stats.json | python -m json.tool
+# 查看Excel学习计划
+# 用Excel软件打开 excel_files/学习计划.xlsx
 
-# 查看知识薄弱点
-cat data/knowledge_gaps.csv
+# 查看学习统计
+# 用Excel软件打开 excel_files/学习统计.xlsx
 ```
 
 ### 在线查看
 - **GitHub仓库**：https://github.com/Ruchenchangsheng/AI-Learning-System-2026
 - **每日日志**：`progress/daily_logs/`目录
+- **Excel文件**：`excel_files/`目录
 - **提交历史**：查看Commit记录
 
 ### 问小爪
@@ -152,14 +187,16 @@ cat data/knowledge_gaps.csv
 - "我现在的学习进度如何？"
 - "哪些知识点需要加强？"
 - "下一步应该学什么？"
+- "我的学习效率怎么样？"
 
 ## 🛠️ 技术支持
 
 ### 常见问题
-1. **Git操作问题**：参考Git基础教程
-2. **Python安装问题**：搜索错误信息 + 解决方案
-3. **学习困难**：及时向小爪提问
-4. **进度落后**：联系小爪调整计划
+1. **Excel文件打不开**：确保已安装Excel或WPS Office
+2. **Git操作问题**：参考Git基础教程
+3. **Python安装问题**：搜索错误信息 + 解决方案
+4. **学习困难**：及时向小爪提问
+5. **进度落后**：联系小爪调整计划
 
 ### 联系小爪
 - **主要渠道**：QQ聊天
@@ -184,7 +221,7 @@ cat data/knowledge_gaps.csv
 
 ### 今日检查清单
 1. [ ] 克隆仓库到本地
-2. [ ] 查看今日学习计划
+2. [ ] 查看今日学习计划（Markdown或Excel）
 3. [ ] 安装Python环境
 4. [ ] 开始Python基础学习
 5. [ ] 记录学习进度
@@ -201,8 +238,9 @@ cat data/knowledge_gaps.csv
 **小爪会全程陪伴，我们一起加油！** 🐾
 
 ---
-*系统版本: 1.0.0*
-*初始化日期: 2026-03-29*
+*系统版本: 2.0.0*
+*升级日期: 2026-03-29*
+*升级内容: JSON → Excel格式升级*
 *学生: 爸爸*
 *AI助手: 小爪*
 *仓库: https://github.com/Ruchenchangsheng/AI-Learning-System-2026*
